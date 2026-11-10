@@ -1,0 +1,69 @@
+print("Hello, I'm test Task Manager based on python for learn something new in programming! "
+      "\nHere's all options what you can choose.")
+
+
+def main():
+    count = 0
+    tasks = []
+    while True:
+        print("\nWrite number of operation what you want to do. "
+          "\n 1. - Add one task or more. "
+          "\n 2. - Show tasks "
+          "\n 3. - Complete tasks"
+          "\n 4. - Exit the program")
+
+        choose = input("So, what you choose? "
+              "\nWrite here number of operation: ")
+
+        if choose in ("1", "1."):
+            add_task(count, tasks)
+
+        elif choose in ("2", "2."):
+            show_tasks(tasks)
+
+        elif choose in ("3", "3."):
+            complete_tasks()
+
+        elif choose in ("4", "4."):
+            break
+
+def add_task(count, tasks):
+    while True:
+        n = int(input("How much tasks you want to add: "))
+
+        for i in range (n):
+            task = input(f"Enter your task: ")
+            tasks.append(task)
+
+        print("That's all, or add new tasks? Write the number of operation you want "
+              "\n1. Add new tasks."
+              "\n2. Back to menu."
+              "\n3. Exit the program")
+
+        choose = (input("Enter number of operation you want to do: "))
+        if choose in ("1", "1."):
+            pass
+        elif choose in ("2", "2."):
+            main()
+
+        else:
+            break
+
+        return count, tasks
+
+def show_tasks(tasks):
+    print("\nHere all your tasks:")
+    for index, value in enumerate(tasks, start=1):
+        print(f"{index}. {value}")
+
+
+
+
+def complete_tasks():
+    pass
+
+    main()
+
+
+if __name__ == "__main__":
+    main()
