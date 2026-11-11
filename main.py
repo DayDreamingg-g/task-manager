@@ -3,7 +3,6 @@ print("Hello, I'm test Task Manager based on python for learn something new in p
 
 
 def main():
-    count = 0
     tasks = []
     while True:
         print("\nWrite number of operation what you want to do. "
@@ -16,7 +15,7 @@ def main():
               "\nWrite here number of operation: ")
 
         if choose in ("1", "1."):
-            add_task(count, tasks)
+            add_task(tasks)
 
         elif choose in ("2", "2."):
             show_tasks(tasks)
@@ -27,7 +26,7 @@ def main():
         elif choose in ("4", "4."):
             break
 
-def add_task(count, tasks):
+def add_task(tasks):
     while True:
         n = int(input("How much tasks you want to add: "))
 
@@ -61,7 +60,15 @@ def complete_tasks(tasks):
     print("\nHere all your tasks:")
     for index, value in enumerate(tasks, start=1):
         print(f"{index}. {value}")
-        print("\nWhat task you want to complete?")
+    task_complete=int(input("\nWhat task you want to complete?"))
+    if task_complete >= 1 and task_complete <= len(tasks):
+        try:
+            tasks.pop(task_complete-1)
+        except:
+            pass
+    else:
+        return
+
 
 
 
