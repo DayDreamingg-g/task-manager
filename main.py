@@ -22,7 +22,7 @@ def main():
             show_tasks(tasks)
 
         elif choose in ("3", "3."):
-            complete_tasks()
+            complete_tasks(tasks)
 
         elif choose in ("4", "4."):
             break
@@ -44,12 +44,10 @@ def add_task(count, tasks):
         if choose in ("1", "1."):
             pass
         elif choose in ("2", "2."):
-            main()
+            return
 
         else:
             break
-
-        return count, tasks
 
 def show_tasks(tasks):
     print("\nHere all your tasks:")
@@ -59,10 +57,12 @@ def show_tasks(tasks):
 
 
 
-def complete_tasks():
-    pass
+def complete_tasks(tasks):
+    print("\nHere all your tasks:")
+    for index, value in enumerate(tasks, start=1):
+        print(f"{index}. {value}")
+        print("\nWhat task you want to complete?")
 
-    main()
 
 
 if __name__ == "__main__":
