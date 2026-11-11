@@ -4,6 +4,7 @@ print("Hello, I'm test Task Manager based on python for learn something new in p
 
 def main():
     tasks = []
+
     while True:
         print("\nWrite number of operation what you want to do. "
           "\n 1. - Add one task or more. "
@@ -15,7 +16,12 @@ def main():
               "\nWrite here number of operation: ")
 
         if choose in ("1", "1."):
-            add_task(tasks)
+            status = add_task(tasks)
+
+            if status == 2:
+                continue
+            elif status == 3:
+                break
 
         elif choose in ("2", "2."):
             show_tasks(tasks)
@@ -43,18 +49,18 @@ def add_task(tasks):
         if choose in ("1", "1."):
             continue
         elif choose in ("2", "2."):
-            return
+            status = 2
+            return status
 
-        else:
-            break
+        elif choose in ("3", "3."):
+            status = 3
+            return status
+
 
 def show_tasks(tasks):
     print("\nHere all your tasks:")
     for index, value in enumerate(tasks, start=1):
         print(f"{index}. {value}")
-
-
-
 
 def complete_tasks(tasks):
     print("\nHere all your tasks:")
@@ -69,12 +75,11 @@ def complete_tasks(tasks):
         return
 
     if 1 <= task_complete <= len(tasks):
+        completed_tasks = tasks[task_complete-1]
         tasks.pop(task_complete -1)
-
+        print(f"Bravo! Task {completed_tasks} completed successfully!")
     else:
         print("Task not found! Please enter a valid task number.")
-
-
 
 if __name__ == "__main__":
     main()
