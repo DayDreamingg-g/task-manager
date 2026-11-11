@@ -42,7 +42,7 @@ def add_task(count, tasks):
 
         choose = (input("Enter number of operation you want to do: "))
         if choose in ("1", "1."):
-            pass
+            continue
         elif choose in ("2", "2."):
             return
 
