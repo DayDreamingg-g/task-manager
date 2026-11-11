@@ -60,16 +60,19 @@ def complete_tasks(tasks):
     print("\nHere all your tasks:")
     for index, value in enumerate(tasks, start=1):
         print(f"{index}. {value}")
-    #task_complete=int(input("\nWhat task you want to complete?"))
-    #if task_complete >= 1 and task_complete <= len(tasks):
+
     try:
         task_complete = int(input("\nWhat task you want to complete?"))
-        #task_complete = int(tasks.pop(task_complete-1))
+
     except ValueError:
         print("Please enter a valid number!")
         return
 
+    if task_complete >= 1 and task_complete <= len(tasks):
+        tasks.pop(task_complete -1)
 
+    else:
+        print("Task not found! Please enter a valid task number.")
 
 
 
