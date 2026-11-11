@@ -68,7 +68,7 @@ def complete_tasks(tasks):
         print("Please enter a valid number!")
         return
 
-    if task_complete >= 1 and task_complete <= len(tasks):
+    if 1 <= task_complete <= len(tasks):
         tasks.pop(task_complete -1)
 
     else:
