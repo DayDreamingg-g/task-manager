@@ -34,7 +34,15 @@ def main():
 
 def add_task(tasks):
     while True:
-        n = int(input("How much tasks you want to add: "))
+        try:
+            n = int(input("How much tasks you want to add: "))
+            if n <= 0:
+                print("Please enter a positive number!")
+                continue
+
+        except ValueError:
+            print("Please enter a valid number!")
+            continue
 
         for i in range (n):
             task = input(f"Enter your task: ")
@@ -45,17 +53,21 @@ def add_task(tasks):
               "\n2. Back to menu."
               "\n3. Exit the program")
 
-        choose = (input("Enter number of operation you want to do: "))
-        if choose in ("1", "1."):
-            continue
-        elif choose in ("2", "2."):
-            status = 2
-            return status
+        while True:
 
-        elif choose in ("3", "3."):
-            status = 3
-            return status
+            choose = (input("Enter number of operation you want to do: "))
+            if choose in ("1", "1."):
+                break
+            elif choose in ("2", "2."):
+                status = 2
+                return status
 
+            elif choose in ("3", "3."):
+                status = 3
+                return status
+
+            else:
+                print("Please enter a valid number from 1 to 3")
 
 def show_tasks(tasks):
     print("\nHere all your tasks:")
@@ -63,7 +75,10 @@ def show_tasks(tasks):
         print(f"{index}. {value}")
 
 def complete_tasks(tasks):
-    print("\nHere all your tasks:")
+    if len(tasks) == 0:
+        print("You dont have any tasks at this moment")
+        return
+
     for index, value in enumerate(tasks, start=1):
         print(f"{index}. {value}")
 
@@ -78,6 +93,7 @@ def complete_tasks(tasks):
         completed_tasks = tasks[task_complete-1]
         tasks.pop(task_complete -1)
         print(f"Bravo! Task {completed_tasks} completed successfully!")
+        return
     else:
         print("Task not found! Please enter a valid task number.")
 
